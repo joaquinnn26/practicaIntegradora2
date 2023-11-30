@@ -17,7 +17,7 @@ router.get("/api/views/products", async (req, res) => {
       const {category} = query
       /* res.render("catalogue", {payload}); */
       const productObject = payload.map(doc => doc.toObject()); 
-      console.log('productObject', productObject)
+      
       res.render('catalogue', { productList: productObject, category, page: page, limit: limit, order: order, nextPage: nextPage, prevPage:prevPage, style: "style" });
       console.log(payload)     
     } catch (error) {
@@ -79,7 +79,7 @@ router.get("/catalogue",async (req, res) => {
       /* res.render("catalogue", {payload}); */
       const productObject = payload.map(doc => doc.toObject());
   const { first_name, email } = req.user;
-  console.log(first_name, email);
+  
   res.render("catalogue", {  productList: productObject, category, page: page, limit: limit, order: order, nextPage: nextPage, prevPage:prevPage, style: "style"  ,user: { first_name, email } });
   } catch (error) {
     res.status(500).json({ message: error.message });
