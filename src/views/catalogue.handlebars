@@ -1,0 +1,56 @@
+<h2>CATALOGUE</h2>
+
+<div id="contenedor">
+    <h2>WELCOME {{user.first_name}}</h2>
+
+    {{#each productList}}
+        <div id="card">
+            <img id="image" src="{{thumbnail}}" alt="" />
+            <h3 id="prod_title">{{title}}</h3>
+            <p id="prod_info">ID: {{_id}}</p>
+            {{!-- <p>Status: {{status}}</p> --}}
+            {{!-- <p>Description: {{description}}</p> --}}
+            <p id="prod_info">Price: ${{price}}</p>
+            {{!-- <p>Code: {{code}}</p> --}}
+            {{!-- <p>Stock: {{stock}}</p> --}}
+            <p id="prod_info">Category: {{category}}</p>
+            <a id="button_verMas" href="/api/views/products/{{_id}}">Ver Mas</a>
+        </div>
+    {{/each}}
+    </div>
+    <div id="pagination_buttons">
+    {{#if prevPage}}
+        {{#if category}}
+        <a
+            id="pagination_button"
+            href="/api/views/products/?limit={{limit}}&page={{prevPage}}&order={{order}}&category={{category}}"
+        >Prev Page</a>
+        {{else}}
+        <a
+            id="pagination_button"
+            href="/api/views/products/?limit={{limit}}&page={{prevPage}}&order={{order}}"
+        >Prev Page</a>
+        {{/if}}
+    {{else}}
+        <p></p>
+    {{/if}}
+    <p id="pagination_number">Page {{page}}</p>
+    {{#if nextPage}}
+        {{#if category}}
+        <a
+            id="pagination_button"
+            href="/api/views/products/?limit={{limit}}&page={{nextPage}}&order={{order}}&category={{category}}"
+        >Next Page</a>
+        {{else}}
+        <a
+            id="pagination_button"
+            href="/api/views/products/?limit={{limit}}&page={{nextPage}}&order={{order}}"
+        >Next Page</a>
+        {{/if}}
+    {{else}}
+        <p></p>
+    {{/if}}
+    </div>
+    <div>
+        <button><a href="/api/sessions/signout">SIGN OUT</a></button>
+    </div>
